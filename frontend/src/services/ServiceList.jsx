@@ -13,7 +13,7 @@ const servicesData = [
    },
    {
       imgUrl: guideImg,
-      title: `Best Tour Guide`,
+      title: `Best Restaurant Guide`,
       desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
    },
    {
