@@ -15,10 +15,10 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    distance: {
-      type: Number,
-      required: true,
-    },
+    // distance: {
+    //   type: Number,
+    //   required: true,
+    // },
     photo: {
       type: String,
       required: true,
@@ -47,6 +47,9 @@ const tourSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    srcMap: {
+      type: String
+    }
   },
   { timestamps: true }
 );

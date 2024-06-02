@@ -1,5 +1,5 @@
 import express from 'express'
-import { createTour, deleteTour, getAllTour, getFeaturedTour, getSingleTour, getTourBySearch, getTourCount, updateTour } from '../Controllers/tourControllers.js'
+import { getReviewTour,createTour, deleteTour, getAllTour, getFeaturedTour, getSingleTour, getTourBySearch, getTourCount, updateTour } from '../Controllers/tourControllers.js'
 
 import { verifyAdmin } from '../utils/verifyToken.js'
 
@@ -16,6 +16,9 @@ router.delete('/:id', verifyAdmin, deleteTour)
 
 //Get single tour 
 router.get('/:id', getSingleTour)
+
+//Get review tour
+router.get('/reviews/:id', getReviewTour)
 
 //Get all tour 
 router.get('/', getAllTour)
