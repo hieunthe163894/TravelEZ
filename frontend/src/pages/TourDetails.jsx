@@ -10,6 +10,8 @@ import Newsletter from "../shared/Newsletter";
 import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../utils/config";
 import { AuthContext } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const TourDetails = () => {
   const { id } = useParams();
@@ -29,26 +31,25 @@ const TourDetails = () => {
     address,
     distance,
     maxGroupSize,
-    srcMap
+    srcMap,
   } = tour;
 
-  const [reviews, setData] = useState([])
+  console.log(tour);
+  
+  const [reviews, setData] = useState([]);
 
-  const fetchReviewData = async() => {
+  const fetchReviewData = async () => {
     try {
-       const res = await fetch(`${BASE_URL}/tours/reviews/${id}`)
-       const result = await res.json()
-       setData(result.data)
-    } catch (error) {
-       
-    }
- }
+      const res = await fetch(`${BASE_URL}/tours/reviews/${id}`);
+      const result = await res.json();
+      setData(result.data);
+    } catch (error) {}
+  };
 
   useEffect(() => {
-    
-    fetchReviewData()
+    fetchReviewData();
 
- },[])
+  }, []);
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
 
@@ -81,7 +82,7 @@ const TourDetails = () => {
       if (!res.ok) {
         return alert(result.message);
       }
-      fetchReviewData()
+      fetchReviewData();
       reviewMsgRef.current.value = "";
       // alert(result.message);
     } catch (error) {
@@ -93,6 +94,27 @@ const TourDetails = () => {
     window.scrollTo(0, 0);
   }, [tour]);
 
+  const images = [
+    "https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045-2.jpg",
+    "https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/26/1233821/Giai-Nhi-1--Nang-Tre.jpg",
+    "https://images2.thanhnien.vn/528068263637045248/2024/1/25/e093e9cfc9027d6a142358d24d2ee350-65a11ac2af785880-17061562929701875684912.jpg",
+    "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg",
+    "https://image.baohatinh.vn/w1000/news/2128/106d2143531t3118l2.jpg",
+    "https://cdn.tuoitre.vn/thumb_w/480/471584752817336320/2023/10/28/anh01-1698479838620448018349.jpg"
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % photo.length);
+  };
+  const prevImage = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + photo.length) % photo.length
+    );
+  };
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <section>
       <Container>
@@ -102,8 +124,20 @@ const TourDetails = () => {
           <Row>
             <Col lg="8">
               <div className="tour__content">
-                <img src={photo} alt="" />
-
+                <div className="image-container">
+                  <img
+                    src={photo[currentIndex]}
+                    alt={`Slide ${currentIndex + 1}`}
+                  />
+                  <div className="button-container">
+                    <button onClick={prevImage} className="icon-button">
+                      <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                    <button onClick={nextImage} className="icon-button">
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                  </div>
+                </div>
                 <div className="tour__info">
                   <h2>{title}</h2>
                   <div className="d-flex align-items-center gap-5">
@@ -218,7 +252,10 @@ const TourDetails = () => {
                     src={srcMap}
                     width="100%"
                     height="360"
-                    style={{ border: '1px solid #85ccdd', borderRadius: '0.6rem' }}
+                    style={{
+                      border: "1px solid #85ccdd",
+                      borderRadius: "0.6rem",
+                    }}
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -229,6 +266,20 @@ const TourDetails = () => {
             </Col>
 
             <Col lg="4">
+              <div className="tour__img">
+                {photo.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    className={`thumbnail ${
+                      index === currentIndex ? "active" : ""
+                    }`}
+                    onClick={() => handleThumbnailClick(index)}
+                  />
+                ))}
+              </div>
+
               <Booking tour={tour} avgRating={avgRating} />
             </Col>
           </Row>
