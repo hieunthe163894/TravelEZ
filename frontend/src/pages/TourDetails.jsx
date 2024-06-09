@@ -33,10 +33,9 @@ const TourDetails = () => {
     maxGroupSize,
     srcMap,
     opentime,
-  } = tour;
 
-  console.log(tour);
-
+  } = tour || {};
+  
   const [reviews, setData] = useState([]);
 
   const fetchReviewData = async () => {
