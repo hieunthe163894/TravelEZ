@@ -86,21 +86,52 @@ export const getAllTour = async (req, res) => {
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
-
-   // hear 'i' means case sensitive 
-   const city = new RegExp(req.query.city, 'i')
-   // const distance = parseInt(req.query.distance)
-   const maxGroupSize = parseInt(req.query.maxGroupSize)
-
+   const city = req.query.city;
+   const maxGroupSize = parseInt(req.query.maxGroupSize);
+   const price = parseInt(req.query.price);
+   const searchTime = new Date(req.query.searchTime);
    try {
-      // gte means greater than equal
-      const tours = await Tour.find({ city, maxGroupSize: { $gte: maxGroupSize } }).populate('reviews')
+       const tours = await Tour.aggregate([
+           {
+               $match: {
+                   city: new RegExp(city, 'i'),
+                   maxGroupSize: { $gte: maxGroupSize },
+                   price: { $lte: price }
+               }
+           },
+           {
+               $addFields: {
+                   isTimeValid: {
+                       $and: [
+                        { $lte: ["$opentime.start", searchTime] },                      
+                       ]
+                   }
+               }
+           },
+           {
+               $match: {
+                   isTimeValid: true
+               }
+           },
+           {
+               $lookup: {
+                   from: 'reviews',
+                   localField: '_id',
+                   foreignField: 'tourId',
+                   as: 'reviews'
+               }
+           }
+       ]);
+       if (tours.length === 0) {
+           return res.status(404).json({ success: false, message: 'Not Found' });
+       }
 
-      res.status(200).json({ success: true, message: 'Successfully', data: tours })
+       res.status(200).json({ success: true, message: 'Successfully', data: tours });
    } catch (error) {
-      res.status(404).json({ success: false, message: 'Not Found' })
+       console.error('Error:', error);
+       res.status(500).json({ success: false, message: 'Internal Server Error' });
    }
-}
+};
 
 //Get featured Tour
 export const getFeaturedTour = async (req, res) => {
@@ -116,12 +147,12 @@ export const getFeaturedTour = async (req, res) => {
 }
 
 //Get tour count 
-export const getTourCount = async(req,res) => {
+export const getTourCount = async (req, res) => {
    try {
       const tourCount = await Tour.estimatedDocumentCount()
 
-      res.status(200).json({success:true, data:tourCount})
+      res.status(200).json({ success: true, data: tourCount })
    } catch (error) {
-      res.status(500).json({success:false, message: "Failed to fetch"})
+      res.status(500).json({ success: false, message: "Failed to fetch" })
    }
 }

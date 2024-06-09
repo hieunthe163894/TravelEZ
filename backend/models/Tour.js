@@ -32,7 +32,16 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-
+    opentime: {
+      start: {
+        type: String,
+        required: true,
+      },
+      end: {
+        type: String,
+        required: true,
+      },
+    },
     reviews: [
       {
         type: mongoose.Types.ObjectId,
