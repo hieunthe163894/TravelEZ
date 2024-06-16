@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "66544ce38f4d39b4c35e495a"
+  },
+  "username": "admin1",
+  "email": "admin1@gmail.com",
+  "password": "$2a$10$uZ7tk1hwBg0YAJ5dVf6Jw.Em7jcge4VYvSdlK/UrmPBvMiP68mim6",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-05-27T09:05:39.721Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T09:05:39.721Z"
+  },
+  "__v": 0,
+  "photo": "https://cellphones.com.vn/sforum/wp-content/uploads/2024/01/avartar-anime-52.jpg"
+},
+{
+  "_id": {
+    "$oid": "6654536344f225292b79c91d"
+  },
+  "username": "quang",
+  "email": "quang@gmail.com",
+  "password": "$2a$10$Z3.zPJPQThNyrXQ/D15kB.r.UCFylLtu.17AO62TxHFRbdtbd5AjW",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-05-27T09:33:23.096Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T09:33:23.096Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665459a3baba01faf6fd7283"
+  },
+  "username": "user",
+  "email": "user@gmail.com",
+  "password": "$2a$10$2pvBv/hMpEtvk4i78FxG4ulMuefjLC7yWj1ox2FMVuFHE2gMB6EU.",
+  "role": "user",
+  "createdAt": {
+    "$date": "2024-05-27T10:00:03.028Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T10:00:03.028Z"
+  },
+  "__v": 0,
+  "photo": "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/01/avatar-doi-anime-25.jpg"
+}]
