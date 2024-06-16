@@ -9,6 +9,7 @@ const SearchBar = () => {
   const maxGroupSizeRef = createRef();
   const priceRef = createRef();
   const searchTimeRef = createRef();
+  const rateRef = createRef();
   const navigate = useNavigate();
 
   const searchHandler = async () => {
@@ -16,21 +17,22 @@ const SearchBar = () => {
     const maxGroupSize = maxGroupSizeRef.current?.value || 0;
     const price = priceRef.current?.value || 0;
     const searchTime = searchTimeRef.current?.value || "";
+    const rate = rateRef.current?.value || "";
 
-    if (!location || !maxGroupSize || !price || !searchTime) {
+    if (!location || !maxGroupSize || !price || !searchTime || !rate) {
       return alert("All fields are required!");
     }
 
     try {
       const res = await fetch(
-        `${BASE_URL}/tours/search/getTourBySearch?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}`
+        `${BASE_URL}/tours/search/getTourBySearch?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}&rate=${rate}`
       );
 
       if (!res.ok) throw new Error("Something went wrong");
 
       const result = await res.json();
       navigate(
-        `/tours/search?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}`,
+        `/tours/search?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}&rate=${rate}`,
         { state: result.data }
       );
     } catch (error) {
@@ -71,6 +73,15 @@ const SearchBar = () => {
             <div>
               <h6>Price</h6>
               <input type="number" placeholder="Price" ref={priceRef} />
+            </div>
+          </FormGroup>
+          <FormGroup className="d-flex gap-3 form__group form__group-fast">
+            <span>
+              <i className="ri-star-line"></i>
+            </span>
+            <div>
+              <h6>Rate</h6>
+              <input type="number" placeholder="Rate" ref={rateRef} />
             </div>
           </FormGroup>
           <FormGroup className="d-flex gap-3 form__group form__group-fast">
