@@ -10,10 +10,10 @@ const nav__links = [
     path: "/home",
     display: "Trang chủ",
   },
-  {
-    path: "/about",
-    display: "About",
-  },
+  // {
+  //   path: "/about",
+  //   display: "Thông tin",
+  // },
   {
     path: "/tours",
     display: "Nhà hàng",
@@ -95,16 +95,16 @@ const Header = () => {
                     {" "}
                     <h6 className="mb-0">{user.username}</h6>
                     <Button className="btn btn-dark" onClick={logout}>
-                      Logout
+                      Đăng xuất
                     </Button>
                   </>
                 ) : (
                   <>
                     <Button className="btn secondary__btn">
-                      <Link to="/login">Login</Link>
+                      <Link to="/login">Đăng nhập</Link>
                     </Button>
                     <Button className="btn primary__btn">
-                      <Link to="/register">Register</Link>
+                      <Link to="/register">Đăng ký</Link>
                     </Button>
                   </>
                 )}

@@ -7,32 +7,32 @@ import logo from '../../assets/images/logo.png'
 const quick__links = [
    {
       path: '/home',
-      display: 'Home'
+      display: 'Trang chủ'
    },
    {
       path: '/about',
-      display: 'About'
+      display: 'Thông tin'
    },
    {
       path: '/tours',
-      display: 'Tours'
+      display: 'Nhà hàng'
    },
 ]
 
-const quick__links2 = [
-   {
-      path: '/gallery',
-      display: 'Gallery'
-   },
-   {
-      path: '/login',
-      display: 'Login'
-   },
-   {
-      path: '/register',
-      display: 'Register'
-   },
-]
+// const quick__links2 = [
+//    {
+//       path: '/gallery',
+//       display: 'Gallery'
+//    },
+//    {
+//       path: '/login',
+//       display: 'Login'
+//    },
+//    {
+//       path: '/register',
+//       display: 'Register'
+//    },
+// ]
 
 const Footer = () => {
    const year = new Date().getFullYear()
@@ -44,34 +44,14 @@ const Footer = () => {
                <Col lg='3'>
                   <div className="logo">
                      <img src={logo} alt="" />
-                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, enim.</p>
-                     <div className="social__link d-flex align-items-center gap-4">
-                        <span>
-                           <Link to='#'>
-                              <i class='ri-youtube-line'></i>
-                           </Link>
-                        </span>
-                        <span>
-                           <Link to='#'>
-                              <i class='ri-github-fill'></i>
-                           </Link>
-                        </span>
-                        <span>
-                           <Link to='#'>
-                              <i class='ri-facebook-circle-line'></i>
-                           </Link>
-                        </span>
-                        <span>
-                           <Link to='#'>
-                              <i class='ri-instagram-line'></i>
-                           </Link>
-                        </span>
-                     </div>
+                     <p style={{fontSize: "14px"}}>
+                     TravelEZ là Mạng lưới nhà hàng uy tín và chất lượng. Giúp thực khách đặt bàn dễ dàng, được tặng kèm ưu đãi mà không cần mua Deal, Voucher. Giải pháp đột phá mới cho câu chuyện ăn gì, ở đâu!</p>
+                   
                   </div>
                </Col>
 
-               <Col lg='3'>
-                  <h5 className="footer__link-title">Discover</h5>
+               <Col lg='2'>
+                  <h5 className="footer__link-title">Khám phá</h5>
 
                   <ListGroup className='footer__quick-links'>
                      {
@@ -83,7 +63,7 @@ const Footer = () => {
                      }
                   </ListGroup>
                </Col>
-               <Col lg='3'>
+               {/* <Col lg='3'>
                   <h5 className="footer__link-title">Quick Links</h5>
 
                   <ListGroup className='footer__quick-links'>
@@ -95,17 +75,17 @@ const Footer = () => {
                         ))
                      }
                   </ListGroup>
-               </Col>
-               <Col lg='3'>
-                  <h5 className="footer__link-title">Contact</h5>
+               </Col> */}
+               <Col lg='5'>
+                  <h5 className="footer__link-title">Liên hệ</h5>
 
                   <ListGroup className='footer__quick-links'>
                      <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
                         <h6 className='mb-0 d-flex align-items-center gap-2'>
                            <span><i class='ri-map-pin-line'></i></span>
-                           Address:
+                           Địa chỉ:
                         </h6>
-                        <p className='mb-0'>Lorem</p>
+                        <p  className='mb-0'>Đại học FPT, Thạch Hoà, Thạch Thất, Hà Nội, Vietnam</p>
                      </ListGroupItem>
 
                      <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
@@ -114,18 +94,43 @@ const Footer = () => {
                            Email:
                         </h6>
 
-                        <p className='mb-0'>Lorem</p>
+                        <p className='mb-0'>TravelEZ@gmail.com</p>
                      </ListGroupItem>
 
                      <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
                         <h6 className='mb-0 d-flex align-items-center gap-2'>
                            <span><i class='ri-phone-fill'></i></span>
-                           Phone:
+                           Điện thoại:
                         </h6>
 
-                        <p className='mb-0'>Lorem</p>
+                        <p className='mb-0'>035 595 0292</p>
                      </ListGroupItem>
                   </ListGroup>
+               </Col>
+                <Col lg='2'>
+                <h5 className="footer__link-title">Tham gia qua</h5>
+                <div className="social__link d-flex align-items-center gap-4">
+                        <span>
+                           <Link to='/'>
+                              <i class='ri-youtube-line'></i>
+                           </Link>
+                        </span>
+                        {/* <span>
+                           <Link to='#'>
+                              <i class='ri-github-fill'></i>
+                           </Link>
+                        </span> */}
+                        <span>
+                           {/* <Link to=''> */}
+                             <a target='_blank' href="https://www.facebook.com/travelez.fpt"> <i class='ri-facebook-circle-line'></i></a>
+                           {/* </Link> */}
+                        </span>
+                        <span>
+                           <Link to='/'>
+                              <i class='ri-instagram-line'></i>
+                           </Link>
+                        </span>
+                     </div>
                </Col>
             </Row>
          </Container>

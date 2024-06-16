@@ -16,7 +16,7 @@
 .social__link span a {
    text-decoration: none;
    color          : var(--heading-color);
-   font-size      : 1.5rem;
+   font-size      : 3rem;
 }
 
 .footer__link-title {
@@ -44,7 +44,7 @@
 }
 
 .footer__quick-links p {
-   font-size: 1.2rem;
+   /* font-size: 1.2rem; */
 }
 
 .copyright {
