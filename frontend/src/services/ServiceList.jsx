@@ -8,18 +8,18 @@ import customizationImg from '../assets/images/customization.png'
 const servicesData = [
    {
       imgUrl: weatherImg,
-      title: `Calculate Weather`,
-      desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
+      title: `Dự báo thời tiết`,
+      desc: `Những thông tin về thời tiết trong thời gian đặt bàn.`,
    },
    {
       imgUrl: guideImg,
-      title: `Best Restaurant Guide`,
-      desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
+      title: `Hưỡng dẫn đặt bàn chi tiết`,
+      desc: `Đem lại trải nghiệm tốt nhất cho người dùng.`,
    },
    {
       imgUrl: customizationImg,
-      title: 'Customization',
-      desc: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
+      title: 'Tùy chỉnh',
+      desc: `Tùy chỉnh ứng dụng theo cách của bạn.`,
    },
 ]
 

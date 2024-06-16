@@ -93,14 +93,6 @@ const TourDetails = () => {
     window.scrollTo(0, 0);
   }, [tour]);
 
-  const images = [
-    "https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045-2.jpg",
-    "https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/26/1233821/Giai-Nhi-1--Nang-Tre.jpg",
-    "https://images2.thanhnien.vn/528068263637045248/2024/1/25/e093e9cfc9027d6a142358d24d2ee350-65a11ac2af785880-17061562929701875684912.jpg",
-    "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg",
-    "https://image.baohatinh.vn/w1000/news/2128/106d2143531t3118l2.jpg",
-    "https://cdn.tuoitre.vn/thumb_w/480/471584752817336320/2023/10/28/anh01-1698479838620448018349.jpg",
-  ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % photo.length);
@@ -129,7 +121,7 @@ const TourDetails = () => {
               <div className="tour__content">
                 <div className="image-container">
                   <img
-                    src={images[currentIndex]}
+                    src={photo[currentIndex]}
                     alt={`Slide ${currentIndex + 1}`}
                   />
                   <div className="button-container">
@@ -275,10 +267,10 @@ const TourDetails = () => {
 
             <Col lg="4">
               <div className="tour__img">
-                {images.map((images, index) => (
+              {photo.map((image, index) => (
                   <img
                     key={index}
-                    src={images}
+                    src={image}
                     alt={`Thumbnail ${index + 1}`}
                     className={`thumbnail ${
                       index === currentIndex ? "active" : ""
