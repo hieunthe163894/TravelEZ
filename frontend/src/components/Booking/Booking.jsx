@@ -20,7 +20,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
     tourName: title,
     fullName: "",
     phone: "",
-    guestSize: 1,
+    guestSize: "",
     bookAt: "",
     timeBooking: "",
   });
@@ -76,9 +76,15 @@ const Booking = ({ tour, avgRating, start, end }) => {
     }
   };
 
-  const serviceFee = 10;
-  const totalAmount =
-    Number(price) * Number(booking.guestSize) + Number(serviceFee);
+  const serviceFee = 5;
+  let totalAmount =
+    Number(price) * Number(booking.guestSize) +
+    Number(serviceFee) * Number(booking.guestSize);
+
+  if (booking.guestSize >= 10) {
+    const discount = (totalAmount * 10) / 100;
+    totalAmount -= discount;
+  }
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -92,20 +98,19 @@ const Booking = ({ tour, avgRating, start, end }) => {
     };
 
     if (!fullName) {
-      newErrors.fullName = "Please enter your full name";
+      newErrors.fullName = "Tên không hợp lệ";
       valid = false;
     }
     if (!phone.match(/^[0-9]{10}$/)) {
-      newErrors.phone = "Invalid phone number";
+      newErrors.phone = "Số điện thoại không hợp lệ";
       valid = false;
     }
     if (!bookAt) {
-      newErrors.bookAt = "Please select a booking date";
+      newErrors.bookAt = "Ngày không hợp lệ";
       valid = false;
     }
     if (guestSize > tour.maxGroupSize || guestSize <= 0) {
-      newErrors.guestSize =
-        "The number of guests must be within the allowed limit";
+      newErrors.guestSize = "Số người không hợp";
       valid = false;
     }
 
@@ -114,7 +119,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
     const endTime = new Date(end);
 
     if (bookingTime < startTime || bookingTime > endTime) {
-      newErrors.timeBooking = `The booking time must be between ${start} and ${end}`;
+      newErrors.timeBooking = `Ngày không hợp lệ`;
       valid = false;
     }
 
@@ -122,7 +127,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
     const currentDate = new Date();
 
     if (bookingDate <= currentDate) {
-      newErrors.bookAt = "The booking date must be in the future";
+      newErrors.bookAt = "Ngày không hợp lệ";
       valid = false;
     }
 
@@ -160,7 +165,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          {price} VND<span>/per person</span>
+          {price} VND<span>/Người</span>
         </h3>
         <span className="tour__rating d-flex align-items-center">
           <i
@@ -173,12 +178,12 @@ const Booking = ({ tour, avgRating, start, end }) => {
 
       {/* =============== BOOKING FORM START ============== */}
       <div className="booking__form">
-        <h5>Information</h5>
+        <h5>Thông tin</h5>
         <Form className="booking__info-form" onSubmit={handleClick}>
           <FormGroup>
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder="Họ và tên"
               id="fullName"
               value={booking.fullName}
               onChange={handleChange}
@@ -191,7 +196,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
           <FormGroup>
             <input
               type="tel"
-              placeholder="Phone"
+              placeholder="Điện thoại"
               id="phone"
               value={booking.phone}
               onChange={handleChange}
@@ -201,7 +206,21 @@ const Booking = ({ tour, avgRating, start, end }) => {
               <div className="invalid-feedback">{errors.phone}</div>
             )}
           </FormGroup>
-          <FormGroup className="d-flex align-items-center gap-3">
+          <FormGroup>
+            <input
+              type="number"
+              placeholder={booking.guestSize ? "" : "Số người"}
+              id="guestSize"
+              value={booking.guestSize}
+              onChange={handleChange}
+              className={errors.guestSize ? "is-invalid" : ""}
+            />
+            {errors.guestSize && (
+              <div className="invalid-feedback">{errors.guestSize}</div>
+            )}
+          </FormGroup>
+        </Form>
+        {/* <FormGroup className="d-flex align-items-center gap-3">
             <input
               type="date"
               id="bookAt"
@@ -237,21 +256,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
             {errors.timeBooking && (
               <div className="invalid-feedback">{errors.timeBooking}</div>
             )}
-          </FormGroup>
-          <FormGroup className="d-flex align-items-center gap-3">
-            <input
-              type="number"
-              placeholder="Guest"
-              id="guestSize"
-              value={booking.guestSize}
-              onChange={handleChange}
-              className={errors.guestSize ? "is-invalid" : ""}
-            />
-            {errors.guestSize && (
-              <div className="invalid-feedback">{errors.guestSize}</div>
-            )}
-          </FormGroup>
-        </Form>
+          </FormGroup> */}
       </div>
       {/* =============== BOOKING FORM END ================ */}
 
@@ -260,30 +265,41 @@ const Booking = ({ tour, avgRating, start, end }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              {price}VND <i className="ri-close-line"></i> 1 person
+              {price}VND <i className="ri-close-line"></i> {booking.guestSize}{" "}
+              người
             </h5>
-            <span> {price}VND</span>
+            <span> {price * booking.guestSize} VND</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
-            <h5>Service charge</h5>
-            <span>{serviceFee}VND</span>
+            <h5 className="d-flex align-items-center gap-1">
+              Phí dịch vụ
+              <i className="ri-close-line"></i>
+              {booking.guestSize} người
+            </h5>
+            <span>{serviceFee * booking.guestSize} VND</span>
           </ListGroupItem>
-          {totalAmount >= 11 && (
+          {totalAmount >= 11 && booking.guestSize < 10 && (
             <ListGroupItem className="border-0 px-0 total">
               <h5>Total</h5>
               <span>{totalAmount} VND</span>
             </ListGroupItem>
           )}
+          {booking.guestSize >= 10 && (
+            <ListGroupItem className="border-0 px-0 total">
+              <h5>Tổng x 10%</h5>
+              <span>{totalAmount} VND</span>
+            </ListGroupItem>
+          )}
           {totalAmount < 11 && (
             <ListGroupItem className="border-0 px-0 total">
-              <h5>Total</h5>
-              <span>Invalid total amount</span>
+              <h5>Tổng</h5>
+              <span>Số tiền không hợp lệ</span>
             </ListGroupItem>
           )}
         </ListGroup>
 
         <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
-          Book Now
+          Đặt ngay
         </Button>
       </div>
     </div>

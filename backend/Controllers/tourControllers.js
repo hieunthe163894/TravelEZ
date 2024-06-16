@@ -96,9 +96,11 @@ export const getTourBySearch = async (req, res) => {
          {
             $match: {
                city: "Hà Nội",
-               maxGroupSize: { $gt: parsedMaxGroupSize },
-               price: { $lte: parsedPrice },
-               rate: { $eq: parsedRate},
+               $or: [
+                  { maxGroupSize: { $gt: parsedMaxGroupSize } },
+                  { price: { $lte: parsedPrice } },
+                  { rate: { $eq: parsedRate } },
+               ]
             },
          },
          {
