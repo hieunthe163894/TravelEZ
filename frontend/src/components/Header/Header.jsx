@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 const nav__links = [
   {
     path: "/home",
-    display: "Home",
+    display: "Trang chủ",
   },
   {
     path: "/about",
@@ -16,11 +16,11 @@ const nav__links = [
   },
   {
     path: "/tours",
-    display: "Restaurant",
+    display: "Nhà hàng",
   },
   {
     path: '/posts',
-    display: 'Post'
+    display: 'Bài viết'
  }
 ];
 
