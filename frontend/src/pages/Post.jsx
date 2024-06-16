@@ -159,18 +159,18 @@ const BlogPost = () => {
                   <div className="interaction">
                     <div className={`like ${likes[post._id] ? 'active' : ''}`} onClick={() => handleLike(post._id)}>
                       <i className="ri-thumb-up-line"></i>
-                      <a style={{ marginLeft: "5px" }}>Like</a>
+                      <a style={{ marginLeft: "5px" }}>Thích</a>
                     </div>
                     <div className="save" onClick={handleSave}>
                      <i className="ri-file-add-line"></i>
-                     <a style={{ marginLeft: "5px" }}>Save</a> 
+                     <a style={{ marginLeft: "5px" }}>Lưu</a> 
                     </div>
                   </div>
                   <Form onSubmit={(event) => handleCommentSubmit(event, post._id)}>
                     <div className="review__input">
                       <input
                         type="text"
-                        placeholder="Share your thoughts"
+                        placeholder="Bình luận bài viết..."
                         value={newComment}
                         onChange={handleCommentChange}
                         required
