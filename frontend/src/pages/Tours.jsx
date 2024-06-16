@@ -25,7 +25,7 @@ const Tours = () => {
 
    return (
       <>
-         <CommonSection title={"All Restaurant"} />
+         <CommonSection title={"Tất cả nhà hàng"} />
          <section>
             <Container>
                <Row>

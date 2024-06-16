@@ -9,28 +9,26 @@ const SearchBar = () => {
   const maxGroupSizeRef = createRef();
   const priceRef = createRef();
   const searchTimeRef = createRef();
+  const rateRef = createRef();
   const navigate = useNavigate();
 
   const searchHandler = async () => {
     const location = locationRef.current?.value || "";
-    const maxGroupSize = maxGroupSizeRef.current?.value || 0;
-    const price = priceRef.current?.value || 0;
+    const maxGroupSize = maxGroupSizeRef.current?.value || "";
+    const price = priceRef.current?.value || "";
     const searchTime = searchTimeRef.current?.value || "";
-
-    if (!location || !maxGroupSize || !price || !searchTime) {
-      return alert("All fields are required!");
-    }
+    const rate = rateRef.current?.value || "";
 
     try {
       const res = await fetch(
-        `${BASE_URL}/tours/search/getTourBySearch?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}`
+        `${BASE_URL}/tours/search/getTourBySearch?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}&rate=${rate}`
       );
 
-      if (!res.ok) throw new Error("Something went wrong");
+      if (!res.ok) throw new Error("Dữ liệu bạn nhập không tồn tại");
 
       const result = await res.json();
       navigate(
-        `/tours/search?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}`,
+        `/tours/search?city=${location}&maxGroupSize=${maxGroupSize}&price=${price}&searchTime=${searchTime}&rate=${rate}`,
         { state: result.data }
       );
     } catch (error) {
@@ -47,10 +45,10 @@ const SearchBar = () => {
               <i className="ri-map-pin-line"></i>
             </span>
             <div>
-              <h6>Location</h6>
+              <h6>Địa điểm</h6>
               <input
                 type="text"
-                placeholder="Where are you going?"
+                placeholder="Địa điểm bạn muốn đến ?"
                 ref={locationRef}
               />
             </div>
@@ -60,7 +58,7 @@ const SearchBar = () => {
               <i className="ri-group-line"></i>
             </span>
             <div>
-              <h6>Max People</h6>
+              <h6>Số người</h6>
               <input type="number" placeholder="0" ref={maxGroupSizeRef} />
             </div>
           </FormGroup>
@@ -69,8 +67,17 @@ const SearchBar = () => {
               <i className="ri-money-dollar-circle-line"></i>
             </span>
             <div>
-              <h6>Price</h6>
-              <input type="number" placeholder="Price" ref={priceRef} />
+              <h6>Giá</h6>
+              <input type="number" placeholder="0" ref={priceRef} />
+            </div>
+          </FormGroup>
+          <FormGroup className="d-flex gap-3 form__group form__group-fast">
+            <span>
+              <i className="ri-star-line"></i>
+            </span>
+            <div>
+              <h6>Đánh giá</h6>
+              <input type="number" placeholder="0" ref={rateRef} />
             </div>
           </FormGroup>
           <FormGroup className="d-flex gap-3 form__group form__group-fast">
@@ -78,7 +85,7 @@ const SearchBar = () => {
               <i className="ri-time-line"></i>
             </span>
             <div>
-              <h6>Search Time</h6>
+              <h6>Đặt lịch</h6>
               <input type="datetime-local" ref={searchTimeRef} />
             </div>
           </FormGroup>

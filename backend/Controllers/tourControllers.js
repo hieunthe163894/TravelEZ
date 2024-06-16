@@ -86,53 +86,42 @@ export const getAllTour = async (req, res) => {
 
 // Get tour by search
 export const getTourBySearch = async (req, res) => {
-   const city = req.query.city;
-   const maxGroupSize = parseInt(req.query.maxGroupSize);
-   const price = parseInt(req.query.price);
-   const searchTime = new Date(req.query.searchTime);
-   try {
-       const tours = await Tour.aggregate([
-           {
-               $match: {
-                   city: new RegExp(city, 'i'),
-                   maxGroupSize: { $gte: maxGroupSize },
-                   price: { $lte: price }
-               }
-           },
-           {
-               $addFields: {
-                   isTimeValid: {
-                       $and: [
-                        { $lte: ["$opentime.start", searchTime] },                      
-                       ]
-                   }
-               }
-           },
-           {
-               $match: {
-                   isTimeValid: true
-               }
-           },
-           {
-               $lookup: {
-                   from: 'reviews',
-                   localField: '_id',
-                   foreignField: 'tourId',
-                   as: 'reviews'
-               }
-           }
-       ]);
-       if (tours.length === 0) {
-           return res.status(404).json({ success: false, message: 'Not Found' });
-       }
+   const { maxGroupSize, price, rate } = req.query;
+   const parsedMaxGroupSize = parseInt(maxGroupSize);
+   const parsedPrice = parseInt(price);
+   const parsedRate = parseInt(rate);
 
-       res.status(200).json({ success: true, message: 'Successfully', data: tours });
+   try {
+      const tours = await Tour.aggregate([
+         {
+            $match: {
+               city: "Hà Nội",
+               $or: [
+                  { maxGroupSize: { $gt: parsedMaxGroupSize } },
+                  { price: { $lte: parsedPrice } },
+                  { rate: { $eq: parsedRate } },
+               ]
+            },
+         },
+         {
+            $lookup: {
+               from: "reviews",
+               localField: "_id",
+               foreignField: "tourId",
+               as: "reviews",
+            },
+         }
+      ]).exec();
+      if (tours.length === 0) {
+         return res.status(404).json({ success: false, message: 'Not Found' });
+      }
+
+      res.status(200).json({ success: true, message: 'Successfully found tours', data: tours });
    } catch (error) {
-       console.error('Error:', error);
-       res.status(500).json({ success: false, message: 'Internal Server Error' });
+      console.error('Error:', error);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
    }
 };
-
 //Get featured Tour
 export const getFeaturedTour = async (req, res) => {
    //console.log(page)
