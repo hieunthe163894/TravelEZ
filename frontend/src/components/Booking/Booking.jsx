@@ -43,6 +43,10 @@ const Booking = ({ tour, avgRating, start, end }) => {
     return hours;
   };
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN").format(amount);
+  };
+
   useEffect(() => {
     const startTime = formatTime(start);
     const endTime = formatTime(end);
@@ -265,29 +269,46 @@ const Booking = ({ tour, avgRating, start, end }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              {price}VND <i className="ri-close-line"></i> {booking.guestSize}{" "}
-              người
+            {formatCurrency(price)}.000 VND
+              {booking.guestSize > 0 && (
+                <>
+                  <i className="ri-close-line"></i>
+                  {booking.guestSize} người
+                </>
+              )}
             </h5>
-            <span> {price * booking.guestSize} VND</span>
+            {booking.guestSize > 0 && (
+              <span>
+                {formatCurrency(price * booking.guestSize)}.000 VND
+              </span>
+            )}
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
               Phí dịch vụ
-              <i className="ri-close-line"></i>
-              {booking.guestSize} người
+              {booking.guestSize > 0 && (
+                <>
+                  <i className="ri-close-line"></i>
+                  {booking.guestSize} người
+                </>
+              )}
             </h5>
-            <span>{serviceFee * booking.guestSize} VND</span>
+            {booking.guestSize > 0 && (
+              <span>
+                {formatCurrency(serviceFee * booking.guestSize)}.000 VND
+              </span>
+            )}
           </ListGroupItem>
           {totalAmount >= 11 && booking.guestSize < 10 && (
             <ListGroupItem className="border-0 px-0 total">
-              <h5>Total</h5>
-              <span>{totalAmount} VND</span>
+              <h5>Tổng</h5>
+              <span>{formatCurrency(totalAmount)}.000 VND</span>
             </ListGroupItem>
           )}
           {booking.guestSize >= 10 && (
             <ListGroupItem className="border-0 px-0 total">
               <h5>Tổng x 10%</h5>
-              <span>{totalAmount} VND</span>
+              <span>{formatCurrency(totalAmount)}.000 VND</span>
             </ListGroupItem>
           )}
           {totalAmount < 11 && (
