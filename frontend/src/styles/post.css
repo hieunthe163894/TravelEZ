@@ -1,0 +1,137 @@
+p{
+	margin: 0 !important;
+}
+/* 
+.postTime{
+	margin: 10px;
+
+} */
+
+:root {
+	--background-gradient: linear-gradient(178deg, #ffff33 10%, #3333ff);
+	--gray: #34495e;
+	--darkgray: #55b8d1;
+  }
+  
+  select {
+	/* Reset Select */
+	appearance: none;
+	outline: 10px red;	
+	border: 0;
+	box-shadow: none;
+	/* Personalize */
+	flex: 1;
+	padding: 0 1em;
+	color: #fff;
+	/* background-color: var(--darkgray); */
+	background-image: none;
+	cursor: pointer;
+	color: black;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+	display: none;
+  }
+  /* Custom Select wrapper */
+  .select {
+	position: relative;
+	display: flex;
+	width: 20em;
+	height: 3em;
+	border-radius: .25em;
+	overflow: hidden;
+	margin: 20px 0 20px 0;
+	border: 1px solid black;
+  }
+  /* Arrow */
+  .select::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1em;
+	background-color: #34495e;
+	transition: .25s all ease;
+	pointer-events: none;
+  }
+  /* Transition */
+  .select:hover::after {
+	color: #f39c12;
+  }
+
+
+
+.post_content{
+    padding: 10px;
+	border-radius: 10px;
+	/* border: 3px solid  black; */
+	margin-bottom: 50px;
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	;
+}	
+.title{
+    text-align: center;
+
+}
+.top-container{
+	display: flex;
+    /* margin: 0 0 5px 0; */
+}   
+.name{
+	font-size: 15px;
+	font-weight: bold;
+	color: #272727;
+	position: relative;
+	top: 8px;
+}
+.mail{
+	font-size: 14px;
+	color: grey;
+	position: relative;
+	/* top: 2px; */
+}
+
+.interaction{
+	text-align: center;
+	display: flex;
+	padding: 5px;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	margin-bottom: 10px;
+}
+
+.save, .like {
+	width: 50%;
+	
+}
+
+.save:hover{
+	color: blue;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: rgba(0, 255, 255, 0.171);
+}
+
+.like{
+	border-right: 1px solid black;
+}
+.like:hover{
+	color: blue;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: rgba(0, 255, 255, 0.171);
+}
+
+.like.active {
+	color:blue;
+}
+
+/* 
+.ri-thumb-up-line .circle{
+	background-color: white;
+	border-radius: 50%;
+	border: 1px solid grey;
+	padding: 10px;
+} */

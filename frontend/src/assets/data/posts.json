@@ -1,0 +1,98 @@
+[{
+  "_id": {
+    "$oid": "66681ddf95dce00ce098fb5e"
+  },
+  "title": "Giới thiệu nhà hàng: Hà Nội Phố - Hàm Nghia",
+  "image": [
+    "https://images.toplist.vn/images/800px/nha-hang-thai-umee-1247127.jpg",
+    "https://images.toplist.vn/images/800px/nha-hang-thai-umee-1247127.jpg"
+  ],
+  "desc": "<p><br></p><h3><strong>Nhà hàng Hà Nội Phố - Số 1, Lô TT01, KĐT HD Mon, Ngõ số 4 Hàm Nghi, Nam Từ Liêm – Khám phá ẩm thực Việt trong không gian nhẹ nhàng &amp; đầy hoài cổ</strong></h3><p><br></p><p>Ra mắt và hoạt động từ năm 2018, nhà hàng Hà Nội Phố - số 1, lô TT01, KĐT HD Mon, Ngõ số 4 Hàm Nghi, quận Nam Từ Liêm là nơi thực khách dễ dàng tìm thấy rất nhiều món ngon hấp dẫn mang đậm hương sắc Việt Nam , cho các bữa ăn hay bữa tiệc liên hoan của mình. Từ những nguyên tươi ngon đã không còn xa lạ như: cá lăng, cua đồng, thịt bò, thịt gà, thịt lợn... đủ món ăn hấp dẫn được tạo dựa trên nền tảng hương vị Việt thuần túy như: nướng, lẩu, xào, om, quay... bởi bàn tay khéo léo của đội ngũ đầu bếp tâm huyết và giàu kinh nghiệm. Tuy nhiên, bạn cũng cần phải biết đến những cái tên lọt trong “top yêu thích” của nhà hàng như: Gà quay, Set lẩu riêu cua sườn sụn, Cá lăng om chuối đậu, Cá lăng xào hành nấm, Cá lăng nướng dân tộc, Gỏi nhệch Nga Sơn, Cá chìa vôi Đà Nẵng, Mực một nắng, Lẩu cua đồng, Lẩu riêu cua bắp bò sườn sụn…</p><p><br></p><p>Bên cạnh việc thưởng thức món ăn ngon, thực khách đến với nhà hàng Hà Nội Phố được tận hưởng những giờ phút thư giãn trong không gian 5 tầng (sức chứa 180 khách) được thiết kế theo phong cách hoài cổ - lấy cảm hứng từ những con phố Hà Nội xưa. Nổi bật với những bàn ghế gỗ gam nâu sáng, dáng hiện đại; với gam trắng – đen của tranh tường phố cổ hay những đèn thả trần cách điệu đầy độc đáo... Hà Nội Phố mang đến một không gian ấm cúng cho các bữa ăn gia đình, nhưng cũng vừa đủ thoải mái để đáp ứng những bữa tiệc, liên hoan nhóm đông người. Ngoài không gian chung ấy, nhà hàng còn dành ra 4 phòng riêng (12-24 khách/phòng) khi thực khách có nhu cầu họp mặt, trao đổi riêng tư.</p><p><br></p><p>Với mức giá hợp lý khoảng 150.000 đến 200.000 vnđ/người, nhà hàng Hà Nội Phố rất thích hợp với những buổi liên hoan, tiếp khách, tổ chức sinh nhật, đi ăn cùng bạn bè, người thân...</p><p><br></p>",
+  "author": {
+    "$oid": "66544ce38f4d39b4c35e495a"
+  },
+  "reviews": [],
+  "likes": 276,
+  "comments": [
+    {
+      "text": "Đã đi và thấy đồ ăn khá ngon, giá cũng hợp lý",
+      "createdAt": {
+        "$date": "2024-06-07T11:37:15.043Z"
+      },
+      "_id": {
+        "$oid": "66681ddf95dce00ce098fb5f"
+      },
+      "author": {
+        "$oid": "665459a3baba01faf6fd7283"
+      }
+    },
+    {
+      "text": "Cảm ơn bạn đã đóng góp ý kiến",
+      "createdAt": {
+        "$date": "2024-06-07T11:37:15.043Z"
+      },
+      "_id": {
+        "$oid": "66681ddf95dce00ce098fb60"
+      },
+      "author": {
+        "$oid": "66544ce38f4d39b4c35e495a"
+      }
+    },
+    {
+      "text": "Không có gì ạ ^^",
+      "author": {
+        "$oid": "665459a3baba01faf6fd7283"
+      },
+      "createdAt": {
+        "$date": "2024-06-11T13:29:16.665Z"
+      },
+      "_id": {
+        "$oid": "6668512cd389793659a3063d"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-07T11:37:15.043Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-11T13:29:16.674Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "666841c1e45b04924aae9e5b"
+  },
+  "title": "Top các quán ăn ngon khu vực Bách Khoa - Kinh Tế - Xây Dựng giá RẺ",
+  "image": [
+    "https://cdn.pastaxi-manager.onepas.vn/content/uploads/articles/lanmkt/quananoquanhbt/quananngonbachkhoa/quan-an-ngon-bach-khoa-maru.jpg",
+    "https://images.toplist.vn/images/800px/nha-hang-thai-umee-1247127.jpg"
+  ],
+  "desc": "<p>I. Quán ăn ngon bình dân khu vực Bách - Kinh - Xây&nbsp;<br>1. Lẩu Quán 88 Nguyễn Hiền&nbsp;<br>Buffet lẩu ngon cho sinh viên<br>Địa chỉ: Số 106 K11A Nguyễn Hiền - Phường Bách Khoa - Quận Hai Bà Trưng - Hà Nội<br>Mức giá: Từ 100.000 VNĐ - 170.000 VNĐ<br>Thời gian mở cửa: từ 10:30 - 14:00 &amp; từ 17:00 - 22:00<br>Món ăn đặc trưng: buffet lẩu các loại: Lẩu Tomyum, lẩu Laksa, Món ăn gọi riêng hấp dẫn (Nem giòn Taiwan, nộm chân gà, ếch chiên cay Thái, khoai lang kén)<br>Đối tượng khách hàng: Sinh viên, dân văn phòng có nhu cầu mở tiệc, họp nhóm, tổ chức tiệc tất niên, ăn nhậu liên hoan cuối năm&nbsp;<br>2. Cơm niêu Singapore &nbsp;Kombo Trần Đại Nghĩa&nbsp;<br>Cơm niêu ngon lạ miệng cho dân văn phòng<br>Địa chỉ: Số 46 Trần Đại Nghĩa - Quận Hai Bà Trưng - Hà Nội<br>Mức giá: Từ 70.000 VNĐ - 100.000 VNĐ<br>Thời gian mở cửa: từ 10:30 - 21:30<br>Món ăn đặc trưng: Cơm niêu bò nướng, cơm niêu gà sốt nấm, cơm niêu thịt sốt BBQ, cơm niêu bò sốt tiêu đen.&nbsp;<br>Đối tượng khách hàng: Gia đình ăn uống, bạn bè hẹn hò, sinh viên hay dân văn phòng ăn trưa ăn tối.&nbsp;</p>",
+  "author": {
+    "$oid": "66544ce38f4d39b4c35e495a"
+  },
+  "reviews": [],
+  "likes": 108,
+  "comments": [
+    {
+      "text": "Lưu lại nào đi ăn mới được <3",
+      "author": {
+        "$oid": "665459a3baba01faf6fd7283"
+      },
+      "createdAt": {
+        "$date": "2024-06-07T11:37:15.043Z"
+      },
+      "_id": {
+        "$oid": "666841c1e45b04924aae9e5c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-07T13:29:51.049Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-07T13:29:51.049Z"
+  },
+  "__v": 0
+}]

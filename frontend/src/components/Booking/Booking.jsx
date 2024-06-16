@@ -1,14 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./booking.css";
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
+import { formatInTimeZone } from "date-fns-tz";
 
-const Booking = ({ tour, avgRating }) => {
+const Booking = ({ tour, avgRating, start, end }) => {
   const { price, reviews, title } = tour;
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+
+  const [timeBooking, setTimeBooking] = useState("");
+  const [timeOptions, setTimeOptions] = useState([]);
 
   const [booking, setBooking] = useState({
     userId: user && user._id,
@@ -18,6 +22,7 @@ const Booking = ({ tour, avgRating }) => {
     phone: "",
     guestSize: 1,
     bookAt: "",
+    timeBooking: "",
   });
 
   const [errors, setErrors] = useState({
@@ -25,14 +30,50 @@ const Booking = ({ tour, avgRating }) => {
     phone: "",
     bookAt: "",
     guestSize: "",
+    timeBooking: "",
   });
+
+  const formatTime = (timeString) => {
+    if (!timeString || typeof timeString !== "string") {
+      return null;
+    }
+    const timeParts = timeString.split("T")[1].split(":");
+    const hours = parseInt(timeParts[0], 10);
+    const minutes = parseInt(timeParts[1], 10);
+    return hours;
+  };
+
+  useEffect(() => {
+    const startTime = formatTime(start);
+    const endTime = formatTime(end);
+    const options = [];
+    for (let i = startTime; i <= endTime; i++) {
+      const timeString = `${i}:00`;
+      options.push(timeString);
+    }
+    setTimeOptions(options);
+    console.log("Updated time options:", options);
+  }, [start, end]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setBooking((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
+    if (id === "bookAt") {
+      const bookingDate = new Date(value);
+      const hours = bookingDate.getHours();
+      const minutes = "00";
+      const bookingTime = `${hours}:${minutes}`;
+      setTimeBooking(bookingTime);
+      setBooking((prevState) => ({
+        ...prevState,
+        [id]: value,
+        timeBooking: bookingTime,
+      }));
+    } else {
+      setBooking((prevState) => ({
+        ...prevState,
+        [id]: value,
+      }));
+    }
   };
 
   const serviceFee = 10;
@@ -63,12 +104,23 @@ const Booking = ({ tour, avgRating }) => {
       valid = false;
     }
     if (guestSize > tour.maxGroupSize || guestSize <= 0) {
-      newErrors.guestSize = "The number of guests must be within the allowed limit";
+      newErrors.guestSize =
+        "The number of guests must be within the allowed limit";
+      valid = false;
+    }
+
+    const bookingTime = new Date(timeBooking);
+    const startTime = new Date(start);
+    const endTime = new Date(end);
+
+    if (bookingTime < startTime || bookingTime > endTime) {
+      newErrors.timeBooking = `The booking time must be between ${start} and ${end}`;
       valid = false;
     }
 
     const bookingDate = new Date(bookAt);
     const currentDate = new Date();
+
     if (bookingDate <= currentDate) {
       newErrors.bookAt = "The booking date must be in the future";
       valid = false;
@@ -92,7 +144,7 @@ const Booking = ({ tour, avgRating }) => {
         credentials: "include",
         body: JSON.stringify(booking),
       });
-
+      console.log(booking);
       const result = await res.json();
 
       if (!res.ok) {
@@ -160,6 +212,33 @@ const Booking = ({ tour, avgRating }) => {
             {errors.bookAt && (
               <div className="invalid-feedback">{errors.bookAt}</div>
             )}
+            <select
+              id="timeBooking"
+              value={booking.timeBooking}
+              onChange={handleChange}
+              className={errors.timeBooking ? "is-invalid" : ""}
+            >
+              <option value="" disabled>
+                Open: {formatTime(start)}:00{" "}
+                {formatTime(start) > 12 ? "PM" : "AM"} - Close:{" "}
+                {formatTime(end) > 12 ? formatTime(end) - 12 : formatTime(end)}
+                :00 {formatTime(end) > 12 ? "PM" : "AM"}
+              </option>
+              {timeOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {parseInt(option.split(":")[0]) > 12
+                    ? parseInt(option.split(":")[0]) - 12
+                    : parseInt(option.split(":")[0])}
+                  :{option.split(":")[1]}{" "}
+                  {parseInt(option.split(":")[0]) > 12 ? "PM" : "AM"}
+                </option>
+              ))}
+            </select>
+            {errors.timeBooking && (
+              <div className="invalid-feedback">{errors.timeBooking}</div>
+            )}
+          </FormGroup>
+          <FormGroup className="d-flex align-items-center gap-3">
             <input
               type="number"
               placeholder="Guest"
@@ -189,13 +268,13 @@ const Booking = ({ tour, avgRating }) => {
             <h5>Service charge</h5>
             <span>{serviceFee}VND</span>
           </ListGroupItem>
-          {totalAmount >= 0 && (
+          {totalAmount >= 11 && (
             <ListGroupItem className="border-0 px-0 total">
               <h5>Total</h5>
               <span>{totalAmount} VND</span>
             </ListGroupItem>
           )}
-          {totalAmount < 10 && (
+          {totalAmount < 11 && (
             <ListGroupItem className="border-0 px-0 total">
               <h5>Total</h5>
               <span>Invalid total amount</span>

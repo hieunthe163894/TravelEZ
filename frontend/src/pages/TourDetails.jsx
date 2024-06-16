@@ -12,6 +12,7 @@ import { BASE_URL } from "../utils/config";
 import { AuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { formatInTimeZone } from "date-fns-tz";
 
 const TourDetails = () => {
   const { id } = useParams();
@@ -29,9 +30,10 @@ const TourDetails = () => {
     price,
     city,
     address,
-    distance,
     maxGroupSize,
     srcMap,
+    opentime,
+
   } = tour || {};
   
   const [reviews, setData] = useState([]);
@@ -91,6 +93,14 @@ const TourDetails = () => {
     window.scrollTo(0, 0);
   }, [tour]);
 
+  const images = [
+    "https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045-2.jpg",
+    "https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/26/1233821/Giai-Nhi-1--Nang-Tre.jpg",
+    "https://images2.thanhnien.vn/528068263637045248/2024/1/25/e093e9cfc9027d6a142358d24d2ee350-65a11ac2af785880-17061562929701875684912.jpg",
+    "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg",
+    "https://image.baohatinh.vn/w1000/news/2128/106d2143531t3118l2.jpg",
+    "https://cdn.tuoitre.vn/thumb_w/480/471584752817336320/2023/10/28/anh01-1698479838620448018349.jpg",
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % photo.length);
@@ -104,6 +114,10 @@ const TourDetails = () => {
     setCurrentIndex(index);
   };
 
+  const formatTime = (timeString, timeZone) => {
+    return  
+  };
+
   return (
     <section>
       <Container>
@@ -115,7 +129,7 @@ const TourDetails = () => {
               <div className="tour__content">
                 <div className="image-container">
                   <img
-                    src={photo[currentIndex]}
+                    src={images[currentIndex]}
                     alt={`Slide ${currentIndex + 1}`}
                   />
                   <div className="button-container">
@@ -153,11 +167,16 @@ const TourDetails = () => {
                       <i class="ri-map-pin-2-line"></i> {city}
                     </span>
                     <span>
-                      <i class="ri-money-dollar-circle-line"></i> {price}/ per
-                      person
+                      <i class="ri-money-dollar-circle-line"></i> {price} VND/
+                      per person
                     </span>
                     <span>
-                      <i class="ri-map-pin-time-line"></i> {distance} k/m
+                      <i className="ri-timer-line"></i>
+                      {opentime
+                        ? `Open: ${formatTime(opentime.start)} - ${formatTime(
+                            opentime.end
+                          )}`
+                        : "Open time not available"}
                     </span>
                     <span>
                       <i class="ri-group-line"></i> {maxGroupSize} people
@@ -256,10 +275,10 @@ const TourDetails = () => {
 
             <Col lg="4">
               <div className="tour__img">
-                {photo.map((image, index) => (
+                {images.map((images, index) => (
                   <img
                     key={index}
-                    src={image}
+                    src={images}
                     alt={`Thumbnail ${index + 1}`}
                     className={`thumbnail ${
                       index === currentIndex ? "active" : ""
@@ -269,7 +288,7 @@ const TourDetails = () => {
                 ))}
               </div>
 
-              <Booking tour={tour} avgRating={avgRating} />
+              <Booking tour={tour} avgRating={avgRating} start={opentime?.start} end={opentime?.end}/>
             </Col>
           </Row>
         )}
