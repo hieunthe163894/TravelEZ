@@ -111,7 +111,7 @@ const BlogPost = () => {
 
   return (
     <>
-      <CommonSection title={"Blog"} />
+      <CommonSection title={"Bài viết/ Tin tức"} />
       <Container>
         <Row style={{ justifyContent: "center" }}>
           <Col lg="11">
@@ -176,7 +176,7 @@ const BlogPost = () => {
                         required
                       />
                       <button className="btn primary__btn text-white" type="submit">
-                        Submit
+                        Gửi
                       </button>
                     </div>
                   </Form>
