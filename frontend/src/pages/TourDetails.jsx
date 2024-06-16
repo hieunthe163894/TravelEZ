@@ -23,6 +23,10 @@ const TourDetails = () => {
   // fetch data from database
   const { data: tour, loading, error } = useFetch(`${BASE_URL}/tours/${id}`);
 
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("vi-VN").format(amount);
+  };
+
   const {
     photo = [],
     title,
@@ -33,9 +37,8 @@ const TourDetails = () => {
     maxGroupSize,
     srcMap,
     opentime,
-
   } = tour || {};
-  
+
   const [reviews, setData] = useState([]);
 
   const fetchReviewData = async () => {
@@ -107,7 +110,7 @@ const TourDetails = () => {
   };
 
   const formatTime = (timeString, timeZone) => {
-    return  
+    return;
   };
 
   return (
@@ -159,8 +162,7 @@ const TourDetails = () => {
                       <i class="ri-map-pin-2-line"></i> {city}
                     </span>
                     <span>
-                      <i class="ri-money-dollar-circle-line"></i> {price} VND/
-                      per person
+                      <i class="ri-money-dollar-circle-line"></i> {formatCurrency(price)}.000 VND/ người
                     </span>
                     <span>
                       <i className="ri-timer-line"></i>
@@ -171,16 +173,16 @@ const TourDetails = () => {
                         : "Open time not available"}
                     </span>
                     <span>
-                      <i class="ri-group-line"></i> {maxGroupSize} people
+                      <i class="ri-group-line"></i> {maxGroupSize} người
                     </span>
                   </div>
-                  <h5>Description</h5>
+                  <h5>Mô tả</h5>
                   <p>{desc}</p>
                 </div>
 
                 {/* ============ TOUR REVIEWS SECTION START ============ */}
                 <div className="tour__reviews mt-4">
-                  <h4>Reviews ({reviews?.length} reviews)</h4>
+                  <h4>Đánh giá({reviews?.length} đánh giá)</h4>
 
                   <Form onSubmit={submitHandler}>
                     <div className="d-flex align-items-center gap-3 mb-4 rating__group">
@@ -205,14 +207,14 @@ const TourDetails = () => {
                       <input
                         type="text"
                         ref={reviewMsgRef}
-                        placeholder="share your thoughts"
+                        placeholder="Đánh giá của bạn"
                         required
                       />
                       <button
                         className="btn primary__btn text-white"
                         type="submit"
                       >
-                        Submit
+                        Gửi
                       </button>
                     </div>
                   </Form>
@@ -267,7 +269,7 @@ const TourDetails = () => {
 
             <Col lg="4">
               <div className="tour__img">
-              {photo.map((image, index) => (
+                {photo.map((image, index) => (
                   <img
                     key={index}
                     src={image}
@@ -280,7 +282,12 @@ const TourDetails = () => {
                 ))}
               </div>
 
-              <Booking tour={tour} avgRating={avgRating} start={opentime?.start} end={opentime?.end}/>
+              <Booking
+                tour={tour}
+                avgRating={avgRating}
+                start={opentime?.start}
+                end={opentime?.end}
+              />
             </Col>
           </Row>
         )}
