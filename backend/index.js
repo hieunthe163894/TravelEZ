@@ -15,7 +15,7 @@ const app = express()
 const port = process.env.PORT || 8000
 const corsOptions = {
    // origin: true,
-   origin: 'https://booking-restaurant-zo7p.onrender.com',
+   origin: 'https://travelez-4ro8.onrender.com',
    methods:["GET", "POST", "PUT", "DELETE"],
    credentials: true
 }
