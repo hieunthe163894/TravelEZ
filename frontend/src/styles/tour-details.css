@@ -175,8 +175,8 @@
  }
  
  .thumbnail {
-   width: 100%;
-   max-width: 45%;
+   width: 180px;
+   height: 100px;
    cursor: pointer;
    border-radius: 5px;
    transition: transform 0.3s;
@@ -197,4 +197,17 @@
    border: 1px solid var(--secondary-color);
    padding      : 0.2rem;
    margin-bottom: 5%;
+   overflow: hidden;
+   object-fit: cover;
+   height: 150px;
+}
+
+.image-carousel {
+   border-radius: 0.5rem;
+   border: 1px solid var(--secondary-color);
+   padding      : 0.2rem;
+   margin-bottom: 5%;
+   overflow: hidden;
+   object-fit: cover;
+   height: 400px;
 }

@@ -268,9 +268,9 @@ const TourDetails = () => {
             </Col>
 
             <Col lg="4">
-              <div className="tour__img">
+              <div className="image-carousel">
                 {photo.map((image, index) => (
-                  <img
+                  <img 
                     key={index}
                     src={image}
                     alt={`Thumbnail ${index + 1}`}

@@ -4,7 +4,6 @@ import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
-import { formatInTimeZone } from "date-fns-tz";
 
 const Booking = ({ tour, avgRating, start, end }) => {
   const { price, reviews, title } = tour;
@@ -21,8 +20,8 @@ const Booking = ({ tour, avgRating, start, end }) => {
     fullName: "",
     phone: "",
     guestSize: "",
-    bookAt: "",
-    timeBooking: "",
+    bookAt: "2024-06-02T16:37:53.956+00:00",
+    timeBooking: "13:00",
   });
 
   const [errors, setErrors] = useState({
@@ -56,7 +55,6 @@ const Booking = ({ tour, avgRating, start, end }) => {
       options.push(timeString);
     }
     setTimeOptions(options);
-    console.log("Updated time options:", options);
   }, [start, end]);
 
   const handleChange = (e) => {
@@ -92,13 +90,14 @@ const Booking = ({ tour, avgRating, start, end }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const { fullName, phone, bookAt, guestSize } = booking;
+    const { fullName, phone, bookAt, guestSize, timeBooking } = booking;
     let valid = true;
     let newErrors = {
       fullName: "",
       phone: "",
       bookAt: "",
       guestSize: "",
+      timeBooking: "",
     };
 
     if (!fullName) {
@@ -109,29 +108,12 @@ const Booking = ({ tour, avgRating, start, end }) => {
       newErrors.phone = "Số điện thoại không hợp lệ";
       valid = false;
     }
-    if (!bookAt) {
-      newErrors.bookAt = "Ngày không hợp lệ";
-      valid = false;
-    }
+    // if (!bookAt) {
+    //   newErrors.bookAt = "Ngày không hợp lệ";
+    //   valid = false;
+    // }
     if (guestSize > tour.maxGroupSize || guestSize <= 0) {
       newErrors.guestSize = "Số người không hợp";
-      valid = false;
-    }
-
-    const bookingTime = new Date(timeBooking);
-    const startTime = new Date(start);
-    const endTime = new Date(end);
-
-    if (bookingTime < startTime || bookingTime > endTime) {
-      newErrors.timeBooking = `Ngày không hợp lệ`;
-      valid = false;
-    }
-
-    const bookingDate = new Date(bookAt);
-    const currentDate = new Date();
-
-    if (bookingDate <= currentDate) {
-      newErrors.bookAt = "Ngày không hợp lệ";
       valid = false;
     }
 
@@ -153,12 +135,12 @@ const Booking = ({ tour, avgRating, start, end }) => {
         credentials: "include",
         body: JSON.stringify(booking),
       });
-      console.log(booking);
       const result = await res.json();
 
       if (!res.ok) {
         return alert(result.message);
       }
+      console.log(booking); 
       navigate("/thank-you");
     } catch (error) {
       alert(error.message);
@@ -269,7 +251,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-            {formatCurrency(price)}.000 VND
+              {formatCurrency(price)}.000 VND
               {booking.guestSize > 0 && (
                 <>
                   <i className="ri-close-line"></i>
@@ -278,9 +260,7 @@ const Booking = ({ tour, avgRating, start, end }) => {
               )}
             </h5>
             {booking.guestSize > 0 && (
-              <span>
-                {formatCurrency(price * booking.guestSize)}.000 VND
-              </span>
+              <span>{formatCurrency(price * booking.guestSize)}.000 VND</span>
             )}
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
@@ -319,7 +299,11 @@ const Booking = ({ tour, avgRating, start, end }) => {
           )}
         </ListGroup>
 
-        <Button className="btn primary__btn w-100 mt-4" onClick={handleClick}>
+        <Button
+          type="submit"
+          className="btn primary__btn w-100 mt-4"
+          onClick={handleClick}
+        >
           Đặt ngay
         </Button>
       </div>

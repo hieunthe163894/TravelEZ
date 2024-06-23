@@ -14,8 +14,8 @@
 }
 
 .logo img {
-   width: 50%;
-   object-fit: fill;
+   width: 36%;
+   object-fit: cover;
 }
 
 .menu {

@@ -9,7 +9,7 @@ const servicesData = [
    {
       imgUrl: weatherImg,
       title: `Dự báo thời tiết`,
-      desc: `Những thông tin về thời tiết trong thời gian đặt bàn.`,
+      desc: `Thông tin về thời tiết trong thời gian đặt bàn.`,
    },
    {
       imgUrl: guideImg,

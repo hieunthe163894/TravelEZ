@@ -18,6 +18,62 @@ import NewsLetter from "../shared/Newsletter";
 const Home = () => {
   return (
     <>
+      <style>
+        {`
+          @keyframes blinker {
+            50% {
+              opacity: 0;
+            }
+          }
+        `}
+      </style>
+      {/* ========== ADS SECTION ========== */}
+      <a href="https://6686bet50.com/sportEvents" target="_blank">
+        <img
+          src={
+            "https://cdn.lfastcdn.com/2024/05/Thdsabjk0.gif"
+          }
+          alt="Ad Left"
+          className="position-fixed top-50 start-0 translate-middle-y"
+          style={{
+            width: "90px",
+            height: "800px",
+            objectFit: "cover",
+            overflow: "hidden",
+            // animation: "blinker 10s linear infinite",
+          }}
+        />
+      </a>
+
+      <a href="https://6686bet50.com/sportEvents" target="_blank">
+        <img
+          src={
+            "https://cdn.lfastcdn.com/2024/05/Thdsabjk0.gif"
+          }
+          alt="Ad Right"
+          className="position-fixed top-50 end-0 translate-middle-y"
+          style={{
+            width: "90px",
+            height: "800px",
+            objectFit: "cover",
+            overflow: "hidden",
+            // animation: "blinker 10s linear infinite",
+          }}
+        />
+      </a>
+      <a href="https://6686bet50.com/sportEvents" target="_blank">
+        <img
+          src="https://i.imgur.com/64xIc4u.gif"
+          alt="Ad Bottom"
+          className="position-fixed bottom-0 start-50 translate-middle-x"
+          style={{
+            width: "1200px",
+            height: "90px",
+            objectFit: "cover",
+            overflow: "hidden",
+          }}
+        />
+      </a>
       {/* ========== HERO SECTION ========== */}
       <section>
         <Container>
