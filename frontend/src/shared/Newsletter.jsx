@@ -16,7 +16,7 @@ const NewsLetter = () => {
                         <input type="email" placeholder='Nhập gmail cuả bạn' />
                         <button className="btn newsletter__btn">Hoàn thành</button>
                      </div>
-                     <p>nếu có bất cứ thắc mắc gì hãy để lại thông tin cho chúng tôi
+                     <p>Nếu có bất cứ thắc mắc gì hãy để lại thông tin cho chúng tôi
                      </p>
                   </div>
                </Col>
