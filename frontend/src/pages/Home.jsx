@@ -18,15 +18,6 @@ import NewsLetter from "../shared/Newsletter";
 const Home = () => {
   return (
     <>
-      <style>
-        {`
-          @keyframes blinker {
-            50% {
-              opacity: 0;
-            }
-          }
-        `}
-      </style>
       {/* ========== ADS SECTION ========== */}
       <a href="https://6686bet50.com/sportEvents" target="_blank">
         <img
@@ -36,11 +27,10 @@ const Home = () => {
           alt="Ad Left"
           className="position-fixed top-50 start-0 translate-middle-y"
           style={{
-            width: "90px",
+            width: "70px",
             height: "800px",
             objectFit: "cover",
             overflow: "hidden",
-            // animation: "blinker 10s linear infinite",
           }}
         />
       </a>
@@ -53,15 +43,14 @@ const Home = () => {
           alt="Ad Right"
           className="position-fixed top-50 end-0 translate-middle-y"
           style={{
-            width: "90px",
+            width: "70px",
             height: "800px",
             objectFit: "cover",
             overflow: "hidden",
-            // animation: "blinker 10s linear infinite",
           }}
         />
       </a>
-      <a href="https://6686bet50.com/sportEvents" target="_blank">
+      {/* <a href="https://6686bet50.com/sportEvents" target="_blank">
         <img
           src="https://i.imgur.com/64xIc4u.gif"
           alt="Ad Bottom"
@@ -73,7 +62,7 @@ const Home = () => {
             overflow: "hidden",
           }}
         />
-      </a>
+      </a> */}
       {/* ========== HERO SECTION ========== */}
       <section>
         <Container>
