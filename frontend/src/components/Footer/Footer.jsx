@@ -11,7 +11,7 @@ const quick__links = [
    },
    {
       path: '/about',
-      display: 'Thông tin'
+      display: 'Về chúng tôi'
    },
    {
       path: '/tours',
@@ -127,7 +127,7 @@ const Footer = () => {
                         </span>
                         <span>
                            <Link to='/'>
-                              <i class='ri-instagram-line'></i>
+                              <i class='ri-instagram-line' ></i>
                            </Link>
                         </span>
                      </div>

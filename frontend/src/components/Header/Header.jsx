@@ -10,10 +10,10 @@ const nav__links = [
     path: "/home",
     display: "Trang chủ",
   },
-  // {
-  //   path: "/about",
-  //   display: "Thông tin",
-  // },
+  {
+    path: "/about",
+    display: "Về chúng tôi",
+  },
   {
     path: "/tours",
     display: "Nhà hàng",
