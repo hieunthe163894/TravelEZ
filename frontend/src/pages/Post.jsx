@@ -158,12 +158,12 @@ const BlogPost = () => {
                   </div>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: post.desc }}></div>
-                <img
+                {/* <img
                   src={post.image[0]}
                   alt="Blog description"
                   className="mb-4"
                   style={{ display: "block", width: "400px", height: "300px" }}
-                />
+                /> */}
                 <div className="tour__reviews mt-1">
                   <label>{likes[post._id] ? post.likes + 1 : post.likes}&nbsp;</label>
                   <i className="ri-thumb-up-line"></i>
