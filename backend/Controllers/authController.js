@@ -46,14 +46,15 @@ export const login = async (req, res) => {
       const { password, role, ...rest } = user._doc
 
       // create jwt token
-      const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET_KEY, { expiresIn:"15d" })
+      const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET_KEY, { expiresIn: "15d" })
 
       // set token in the browser cookies and send the response to the client
       res.cookie('accessToken', token, {
          httpOnly: true,
          expires: token.expiresIn
-      }).status(200).json({token, data:{...rest}, role})
+      })
+      return res.status(200).json({ token, data: { ...rest }, role })
    } catch (error) {
-      res.status(500).json({ susccess: false, message: "Failed to login" })
+      return res.status(500).json({ susccess: false, message: "Failed to login" })
    }
 }
