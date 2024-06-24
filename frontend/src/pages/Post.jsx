@@ -8,17 +8,22 @@ import { formatTime } from '../utils/formatTime';
 import CommonSection from '../shared/CommonSection';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import avatarDefault from "../assets/images/avatar.jpg";
 
 const BlogPost = () => {
+  const { user } = useContext(AuthContext);
   const { data: initialPosts, loading, error } = useFetch(`${BASE_URL}/posts`);
   const [posts, setPosts] = useState([]);
+  // Adjust the useState for likes to initialize based on the current user
   const [likes, setLikes] = useState(() => {
-    const savedLikes = localStorage.getItem('likes');
-    return savedLikes ? JSON.parse(savedLikes) : {};
+    if (user) {
+      const savedLikes = localStorage.getItem(`likes-${user._id}`);
+      return savedLikes ? JSON.parse(savedLikes) : {};
+    }
+    return {};
   });
   const [filter, setFilter] = useState('');
   const [newComment, setNewComment] = useState('');
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,15 +46,21 @@ const BlogPost = () => {
     });
   };
 
-  useEffect(() => {
-    localStorage.setItem('likes', JSON.stringify(likes));
-  }, [likes]);
+ // Adjust useEffect to save likes based on the current user
+ useEffect(() => {
+  if (user) {
+    localStorage.setItem(`likes-${user._id}`, JSON.stringify(likes));
+  }
+}, [likes, user]);
+
+// Rest of your component code...
 
   const handleSave = () => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
+    // if (!user) {
+    //   navigate('/login');
+    //   return;
+    // }
+    alert('Hiện chức năng vẫn đang trong quá trình hoàn thiện!');
     // Implement save functionality here
   };
 
@@ -184,7 +195,7 @@ const BlogPost = () => {
                     {post.comments.map((cmt, index) => (
                       <div className="review__item" key={index}>
                         <img
-                          src={cmt.author.photo}
+                          src={cmt.author.photo || avatarDefault}
                           alt="avatar"
                         />
                         <div className="w-100">
