@@ -25,7 +25,7 @@ const Home = () => {
             "https://cdn.lfastcdn.com/2024/05/Thdsabjk0.gif"
           }
           alt="Ad Left"
-          className="position-fixed top-50 start-0 translate-middle-y"
+          className="ad-img position-fixed top-50 start-0 translate-middle-y"
           style={{
             width: "80px",
             height: "800px",
@@ -41,7 +41,7 @@ const Home = () => {
             "https://cdn.lfastcdn.com/2024/05/Thdsabjk0.gif"
           }
           alt="Ad Right"
-          className="position-fixed top-50 end-0 translate-middle-y"
+          className="ad-img position-fixed top-50 end-0 translate-middle-y"
           style={{
             width: "80px",
             height: "800px",

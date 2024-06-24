@@ -165,5 +165,24 @@
   .experience__content h2 {
     font-size: 1.5rem;
   }
+}
 
+/* Responsive Ad Images */
+.ad-img {
+  width: 80px;
+  height: 800px;
+}
+
+@media (max-width: 768px) {
+  .ad-img {
+    width: 60px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ad-img {
+    width: 40px;
+    height: 400px;
+  }
 }
