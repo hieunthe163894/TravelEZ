@@ -64,7 +64,7 @@ const Home = () => {
         />
       </a> */}
       {/* ========== HERO SECTION ========== */}
-      <div style={{marginLeft :"100px", marginRight:"100px"}}>
+      <div style={{marginLeft :"70px", marginRight:"70px"}}>
       <section>
         <Container>
           <Row>
