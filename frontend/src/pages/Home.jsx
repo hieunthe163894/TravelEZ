@@ -67,6 +67,7 @@ const Home = () => {
         />
       </a> */}
       {/* ========== HERO SECTION ========== */}
+      <div style={{marginLeft :"75px", marginRight:"75px"}}>
       <section>
         <Container>
           <Row>
@@ -216,6 +217,7 @@ const Home = () => {
       </section>
       {/* ========== TESTIMONIAL SECTION END ================== */}
       <NewsLetter />
+      </div>
     </>
   );
 };
