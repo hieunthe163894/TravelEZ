@@ -51,7 +51,8 @@ export const login = async (req, res) => {
       // set token in the browser cookies and send the response to the client
       res.cookie('accessToken', token, {
          httpOnly: true,
-         sameSite: 'None', 
+         secure: process.env.NODE_ENV === 'production',
+         sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
          expires: token.expiresIn
       });
 
