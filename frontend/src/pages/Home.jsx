@@ -6,6 +6,7 @@ import heroImg02 from "../assets/images/hero-img02.jpg";
 import heroVideo from "../assets/images/hero-video.mp4";
 import worldImg from "../assets/images/world.png";
 import experienceImg from "../assets/images/experience.png";
+import ImageQC from "../assets/images/quangcao.jpg";
 
 import Subtitle from "./../shared/subtitle";
 import SearchBar from "./../shared/SearchBar";
@@ -19,11 +20,12 @@ const Home = () => {
   return (
     <>
       {/* ========== ADS SECTION ========== */}
-      <a href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw" target="_blank">
+      <a
+        href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw"
+        target="_blank"
+      >
         <img
-          src={
-            "https://bizweb.dktcdn.net/100/101/075/themes/739322/assets/sec_col1_brand_icon1.png?1719280276732"
-          }
+          src={ImageQC}
           alt="Ad Left"
           className="ad-img position-fixed top-50 start-0 translate-middle-y"
           style={{
@@ -35,11 +37,12 @@ const Home = () => {
         />
       </a>
 
-      <a href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw" target="_blank">
+      <a
+        href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw"
+        target="_blank"
+      >
         <img
-          src={
-            "https://bizweb.dktcdn.net/100/101/075/themes/739322/assets/sec_col1_brand_icon1.png?1719280276732"
-          }
+          src={ImageQC}
           alt="Ad Right"
           className="ad-img position-fixed top-50 end-0 translate-middle-y"
           style={{
