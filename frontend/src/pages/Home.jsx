@@ -27,7 +27,7 @@ const Home = () => {
           alt="Ad Left"
           className="ad-img position-fixed top-50 start-0 translate-middle-y"
           style={{
-            width: "80px",
+            width: "70px",
             height: "800px",
             objectFit: "cover",
             overflow: "hidden",
@@ -43,7 +43,7 @@ const Home = () => {
           alt="Ad Right"
           className="ad-img position-fixed top-50 end-0 translate-middle-y"
           style={{
-            width: "80px",
+            width: "70px",
             height: "800px",
             objectFit: "cover",
             overflow: "hidden",
