@@ -169,7 +169,7 @@
 
 /* Responsive Ad Images */
 .ad-img {
-  width: 80px;
+  width: 70px;
   height: 800px;
 }
 
@@ -182,7 +182,7 @@
 
 @media (max-width: 576px) {
   .ad-img {
-    width: 40px;
+    width: 50px;
     height: 400px;
   }
 }
