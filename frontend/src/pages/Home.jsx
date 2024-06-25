@@ -24,7 +24,9 @@ const Home = () => {
         target="_blank"
       >
         <img
-          src={"../assets/images/quangcao.jpg"}
+          src={
+            "https://tptravel.com.vn/mediacenter/media/files/1850/banners/22_1715758700_3026644666c8838d.png"
+          }
           alt="Ad Left"
           className="ad-img position-fixed top-50 start-0 translate-middle-y"
           style={{
@@ -41,7 +43,7 @@ const Home = () => {
         target="_blank"
       >
         <img
-          src={"../assets/images/quangcao.jpg"}
+          src={"https://toptentravel.com.vn/uploads/2024/04/25/tour-khach-doan-top-ten-travel-8.jpg"}
           alt="Ad Right"
           className="ad-img position-fixed top-50 end-0 translate-middle-y"
           style={{
@@ -52,19 +54,6 @@ const Home = () => {
           }}
         />
       </a>
-      {/* <a href="https://6686bet50.com/sportEvents" target="_blank">
-        <img
-          src="https://i.imgur.com/64xIc4u.gif"
-          alt="Ad Bottom"
-          className="position-fixed bottom-0 start-50 translate-middle-x"
-          style={{
-            width: "1200px",
-            height: "90px",
-            objectFit: "cover",
-            overflow: "hidden",
-          }}
-        />
-      </a> */}
       {/* ========== HERO SECTION ========== */}
       <div style={{ marginLeft: "75px", marginRight: "75px" }}>
         <section>
