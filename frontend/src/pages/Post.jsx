@@ -69,6 +69,12 @@ const BlogPost = () => {
     setFilter(event.target.value);
   };
 
+
+  useEffect(() => {
+    // Set default filter to "featured" when component mounts
+    setFilter("featured");
+  }, []);
+  
   const sortedPosts = () => {
     if (filter === "recent") {
       return posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -83,6 +89,7 @@ const BlogPost = () => {
     return posts;
   };
   
+
 
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
