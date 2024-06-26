@@ -96,9 +96,9 @@ const Testimonials = () => {
         </p>
 
         <div className="d-flex align-items-center gap-4 mt-3">
-          <img src={ava03} className="w-25 h-25 rounded-2" alt="" />
+          <img src="https://vapa.vn/wp-content/uploads/2022/12/anh-dep-nu-001.jpg" className="w-25 h-25 rounded-2" alt="" />
           <div>
-            <h6 className="mb-0 mt-3">Hương Giang</h6>
+            <h6 className="mb-0 mt-3">Hà Linh</h6>
             <p>Khách hàng</p>
           </div>
         </div>
