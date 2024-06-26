@@ -18,42 +18,6 @@ import NewsLetter from "../shared/Newsletter";
 const Home = () => {
   return (
     <>
-      {/* ========== ADS SECTION ========== */}
-      <a
-        href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw"
-        target="_blank"
-      >
-        <img
-          src={
-            "https://tptravel.com.vn/mediacenter/media/files/1850/banners/22_1715758700_3026644666c8838d.png"
-          }
-          alt="Ad Left"
-          className="ad-img position-fixed top-50 start-0 translate-middle-y"
-          style={{
-            width: "70px",
-            height: "800px",
-            objectFit: "cover",
-            overflow: "hidden",
-          }}
-        />
-      </a>
-
-      <a
-        href="https://tour.pro.vn/?fbclid=IwZXh0bgNhZW0CMTAAAR18fhjhrJW0bQuSV2W0UF7HG0vZn8kheOxi9eVwQEKjmMUO5EFZTpNSLWA_aem_Oq0ih5q4stY9ynN5K3UFQw"
-        target="_blank"
-      >
-        <img
-          src={"https://toptentravel.com.vn/uploads/2024/04/25/tour-khach-doan-top-ten-travel-8.jpg"}
-          alt="Ad Right"
-          className="ad-img position-fixed top-50 end-0 translate-middle-y"
-          style={{
-            width: "70px",
-            height: "800px",
-            objectFit: "cover",
-            overflow: "hidden",
-          }}
-        />
-      </a>
       {/* ========== HERO SECTION ========== */}
       <div style={{ marginLeft: "75px", marginRight: "75px" }}>
         <section>
