@@ -64,10 +64,10 @@ const Login = () => {
 
                         <Form onSubmit={handleClick}>
                            <FormGroup>
-                              <input type="email" placeholder='Email' id='email' onChange={handleChange} required />
+                              <input type="email" placeholder='Email...' id='email' onChange={handleChange} required />
                            </FormGroup>
                            <FormGroup>
-                              <input type="password" placeholder='Password' id='password' onChange={handleChange} required />
+                              <input type="password" placeholder='Mật khẩu...' id='password' onChange={handleChange} required />
                            </FormGroup>
                            <Button className='btn secondary__btn auth__btn' type='submit'>Đăng nhập</Button>
                         </Form>

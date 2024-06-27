@@ -69,12 +69,27 @@ const BlogPost = () => {
     setFilter(event.target.value);
   };
 
+
+  useEffect(() => {
+    // Set default filter to "featured" when component mounts
+    setFilter("featured");
+  }, []);
+  
   const sortedPosts = () => {
     if (filter === "recent") {
       return posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } else if (filter === "featured") {
+      // Sort by likes in descending order
+      return posts.slice().sort((a, b) => {
+        const likesA = likes[a._id] ? a.likes + 1 : a.likes;
+        const likesB = likes[b._id] ? b.likes + 1 : b.likes;
+        return likesB - likesA;
+      });
     }
     return posts;
   };
+  
+
 
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);

@@ -116,12 +116,12 @@ const Home = () => {
 
                 <div className="counter__wrapper d-flex align-items-center gap-5">
                   <div className="counter__box">
-                    <span>12k+</span>
-                    <h6>Đặt bàn thành công</h6>
+                    <span>937</span>
+                    <h6>Đơn đặt bàn thành công</h6>
                   </div>
                   <div className="counter__box">
-                    <span>2k+</span>
-                    <h6>Khách hàng thường xuyên</h6>
+                    <span>1796</span>
+                    <h6>Số lượng khách ghé thăm</h6>
                   </div>
                 </div>
               </Col>
