@@ -113,6 +113,10 @@ const TourDetails = () => {
     return;
   };
 
+  const getStarClass = (rating) => {
+    return tourRating >= rating ? "text-warning" : "";
+  };
+
   return (
     <section>
       <Container>
@@ -162,7 +166,8 @@ const TourDetails = () => {
                       <i class="ri-map-pin-2-line"></i> {city}
                     </span>
                     <span>
-                      <i class="ri-money-dollar-circle-line"></i> {formatCurrency(price)}.000 VND/ người
+                      <i class="ri-money-dollar-circle-line"></i>{" "}
+                      {formatCurrency(price)}.000 VND/ người
                     </span>
                     <span>
                       <i className="ri-timer-line"></i>
@@ -183,26 +188,39 @@ const TourDetails = () => {
                 {/* ============ TOUR REVIEWS SECTION START ============ */}
                 <div className="tour__reviews mt-4">
                   <h4>Đánh giá({reviews?.length} đánh giá)</h4>
-
                   <Form onSubmit={submitHandler}>
                     <div className="d-flex align-items-center gap-3 mb-4 rating__group">
-                      <span onClick={() => setTourRating(1)}>
-                        1 <i class="ri-star-s-fill"></i>
+                      <span
+                        onClick={() => setTourRating(1)}
+                        className={getStarClass(1)}
+                      >
+                        1 <i className="ri-star-s-fill"></i>
                       </span>
-                      <span onClick={() => setTourRating(2)}>
-                        2 <i class="ri-star-s-fill"></i>
+                      <span
+                        onClick={() => setTourRating(2)}
+                        className={getStarClass(2)}
+                      >
+                        2 <i className="ri-star-s-fill"></i>
                       </span>
-                      <span onClick={() => setTourRating(3)}>
-                        3 <i class="ri-star-s-fill"></i>
+                      <span
+                        onClick={() => setTourRating(3)}
+                        className={getStarClass(3)}
+                      >
+                        3 <i className="ri-star-s-fill"></i>
                       </span>
-                      <span onClick={() => setTourRating(4)}>
-                        4 <i class="ri-star-s-fill"></i>
+                      <span
+                        onClick={() => setTourRating(4)}
+                        className={getStarClass(4)}
+                      >
+                        4 <i className="ri-star-s-fill"></i>
                       </span>
-                      <span onClick={() => setTourRating(5)}>
-                        5 <i class="ri-star-s-fill"></i>
+                      <span
+                        onClick={() => setTourRating(5)}
+                        className={getStarClass(5)}
+                      >
+                        5 <i className="ri-star-s-fill"></i>
                       </span>
                     </div>
-
                     <div className="review__input">
                       <input
                         type="text"
@@ -270,7 +288,7 @@ const TourDetails = () => {
             <Col lg="4">
               <div className="image-carousel">
                 {photo.map((image, index) => (
-                  <img 
+                  <img
                     key={index}
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
